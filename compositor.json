@@ -1,0 +1,143 @@
+{
+  "name": "Milliners-Son/TwitterScraper",
+  "version": "0.1.4",
+  "libraries": {
+    "xv": "^1.1.25"
+  },
+  "title": "",
+  "branch": "",
+  "style": {
+    "name": "Default",
+    "componentSet": {
+      "nav": "nav/BasicNav",
+      "header": "header/BannerHeader",
+      "article": "article/BasicArticle",
+      "footer": "footer/BasicFooter"
+    },
+    "fontFamily": "-apple-system, BlinkMacSystemFont, sans-serif",
+    "fontWeight": 400,
+    "bold": 600,
+    "lineHeight": 1.5,
+    "typeScale": [
+      72,
+      48,
+      24,
+      20,
+      16,
+      14,
+      12
+    ],
+    "monospace": "Menlo, monospace",
+    "heading": {
+      "fontFamily": null,
+      "fontStyle": null,
+      "fontWeight": 600,
+      "lineHeight": 1.25,
+      "textTransform": null,
+      "letterSpacing": null
+    },
+    "h0": {},
+    "h1": {},
+    "h2": {},
+    "h3": {},
+    "h4": {},
+    "h5": {},
+    "h6": {},
+    "alternativeText": {},
+    "space": [
+      0,
+      8,
+      16,
+      32,
+      48,
+      64,
+      96
+    ],
+    "layout": {
+      "maxWidth": 1024,
+      "centered": false
+    },
+    "colors": {
+      "text": "#111",
+      "background": "#fff",
+      "primary": "#08e",
+      "secondary": "#059",
+      "highlight": "#e08",
+      "border": "#ddd",
+      "muted": "#eee"
+    },
+    "border": {
+      "width": 1,
+      "radius": 2
+    },
+    "link": {},
+    "button": {
+      "hover": {
+        "boxShadow": "inset 0 0 0 999px rgba(0, 0, 0, .125)"
+      }
+    },
+    "input": {},
+    "body": {
+      "margin": 0
+    },
+    "breakpoints": {
+      "xs": "@media screen and (max-width:40em)",
+      "sm": "@media screen and (min-width:40em)",
+      "md": "@media screen and (min-width:52em)",
+      "lg": "@media screen and (min-width:64em)"
+    }
+  },
+  "content": [
+    {
+      "component": "nav",
+      "links": [
+        {
+          "href": "https://github.com/Milliners-Son/TwitterScraper",
+          "text": "GitHub"
+        },
+        {
+          "href": "https://npmjs.com/package/twitter-scraper",
+          "text": "npm"
+        }
+      ]
+    },
+    {
+      "component": "header",
+      "heading": "TwitterScraper",
+      "subhead": "Twitter scraper",
+      "children": [
+        {
+          "component": "ui/TweetButton",
+          "text": "TwitterScraper: Twitter scraper",
+          "url": null
+        },
+        {
+          "component": "ui/GithubButton",
+          "user": "Milliners-Son",
+          "repo": "TwitterScraper"
+        }
+      ],
+      "text": "v5.1.0"
+    },
+    {
+      "component": "article",
+      "metadata": {
+        "source": "github.readme"
+      },
+      "html": "\n<p>Retrieve basic tweet data based on the specified query. Requires NodeJS 4+.</p>\n<h2>Usage</h2>\n<pre><span class=\"hljs-meta\">&apos;use strict&apos;</span>;\n\n<span class=\"hljs-keyword\">let</span> stream = <span class=\"hljs-built_in\">require</span>( <span class=\"hljs-string\">&apos;stream&apos;</span> );\n<span class=\"hljs-keyword\">let</span> Scraper = <span class=\"hljs-built_in\">require</span>( <span class=\"hljs-string\">&apos;twitter-scraper&apos;</span> ).Scraper;\n\n<span class=\"hljs-keyword\">let</span> query = <span class=\"hljs-string\">&apos;from:riccardovolo since:2015-05-01 until:2015-05-02&apos;</span>;\n<span class=\"hljs-keyword\">let</span> scraper = <span class=\"hljs-keyword\">new</span> Scraper( query );\n<span class=\"hljs-keyword\">let</span> toConsole = <span class=\"hljs-keyword\">new</span> stream.Writable( {\n  <span class=\"hljs-attr\">objectMode</span>: <span class=\"hljs-literal\">true</span>,\n  <span class=\"hljs-attr\">write</span>: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span>(<span class=\"hljs-params\"> tweet, enc, cb </span>) </span>{\n    <span class=\"hljs-built_in\">console</span>.log( <span class=\"hljs-string\">&apos;Got tweet: &apos;</span>, tweet );\n    <span class=\"hljs-keyword\">return</span> cb();\n  }\n} )\nscraper.pipe( toConsole );\n\n<span class=\"hljs-comment\">// Start the scraper</span>\nscraper.start();</pre><h2>Stream data</h2>\n<p>The data in the stream have the following format:</p>\n<pre>{\n    <span class=\"hljs-string\">&quot;id&quot;</span>: <span class=\"hljs-string\">&quot;123123131312&quot;</span>,       <span class=\"hljs-comment\">// Tweet id as string</span>\n    <span class=\"hljs-string\">&quot;text&quot;</span>: <span class=\"hljs-string\">&quot;tweet tweeeet&quot;</span>,    <span class=\"hljs-comment\">// Text</span>\n    <span class=\"hljs-string\">&quot;timestamp&quot;</span>: <span class=\"hljs-number\">123123123</span>,     <span class=\"hljs-comment\">// Unix seconds</span>\n}</pre><h2>Options</h2>\n<p>The <code>start</code> method can accept 2 parameters <code>first</code> and <code>last</code> </p>\n<h2>Debug</h2>\n<p>The lib uses the <code>debug</code> lib (see <a href=\"https://github.com/visionmedia/debug\">here</a>) use the <code>DEBUG</code> env variable to control the logs.</p>\n<h2>License</h2>\n<p><a href=\"http://www.wtfpl.net/\">http://www.wtfpl.net/</a></p>\n"
+    },
+    {
+      "component": "footer",
+      "links": [
+        {
+          "href": "https://github.com/Milliners-Son/TwitterScraper",
+          "text": "GitHub"
+        },
+        {
+          "href": "https://github.com/Milliners-Son",
+          "text": "Milliners-Son"
+        }
+      ]
+    }
+  ]
+}
